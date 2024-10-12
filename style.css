@@ -1,7 +1,8 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     user-select: none;
-   
 }
 
 body {
@@ -13,8 +14,9 @@ body {
 }
 
 .container {
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
+
 }
 
 .score {
@@ -48,6 +50,40 @@ body {
     margin-bottom: 5vmin;
 }
 
+/* Jump */
+.jumpContainer {
+    position: absolute;
+}
+
+.jumpBtn {
+    position: fixed;
+    z-index: 99999999;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 35vmin;
+    min-height: 12vmin;
+
+    background-color: black;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow:white 4px 4px 0 0, #000 4px 4px 0 1px;
+    
+    color: white;
+    cursor: pointer;
+    outline: none;
+   
+    font-size: 15px;
+    line-height: 20px;
+    padding: 12px 40px;
+}
+
+.jumpBtn:active {
+    box-shadow: none;
+    left: 51%;
+    top: 88%;
+}
+
 .hide {
     display: none;
 }
@@ -57,19 +93,19 @@ body {
     position: absolute;
     width: 300%;
     bottom: 0;
-    left: calc(var(--left) * 1%);  
+    left: calc(var(--left) * 1%);
 }
 
 .player {
     --bottom: 0;
-    position: absolute; 
+    position: absolute;
     left: 1%;
     height: 30%;
     bottom: calc(var(--bottom) * 1%);
 }
 
 .obstacle {
-    position: absolute; 
+    position: absolute;
     left: calc(var(--left) * 1%);
     height: 30%;
     bottom: 0;

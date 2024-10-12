@@ -6,18 +6,18 @@ const CONTAINER_WIDTH = 100;
 const CONTAINER_HEIGHT = 30;
 const SPEED_SCALE_INCREASE = 0.00001;
 
-
 const container = document.querySelector('[data-container]');
 const score = document.querySelector('[data-score]');
 const highScore = document.querySelector('[data-high-score]');
 const messageScreen = document.querySelector('[data-message-screen]');
 const message1 = document.querySelector('.message1');
-const message2 = document.querySelector('.message2');
- 
+
+const jumpBtn = document.querySelector('.jumpBtn');
 
 setPixelToWorldScale();
 window.addEventListener("resize", setPixelToWorldScale);
-document.addEventListener("keydown", handleStart, {once: true});
+document.addEventListener("keydown", handleStart, { once: true });
+jumpBtn.addEventListener("click", handleStart, { once: true });
 
 let lastTime;
 let speedScale;
@@ -47,7 +47,7 @@ function update(time) {
     if (loseCondition()) {
         return handleLose();
     }
-    
+
     lastTime = time;
     window.requestAnimationFrame(update);
 }
@@ -63,34 +63,40 @@ function loseCondition() {
 /* checks collision conditions */
 function isCollision(rect1, rect2) {
     return (
-        rect1.left < rect2.right && 
-        rect1.top < rect2.bottom && 
+        rect1.left < rect2.right &&
+        rect1.top < rect2.bottom &&
         rect1.right > rect2.left &&
         rect1.bottom > rect2.top
     )
 }
 
- 
+
 /* calculates speed */
 function updateSpeedScale(delta) {
     speedScale += delta * SPEED_SCALE_INCREASE;
 }
 
 
-/* calulates score  */   
+/* calulates score  */
 function updateScore(delta) {
     currScore += delta * 0.1;
     score.textContent = Math.floor(currScore);
 }
 
-   
-/* init game */ 
+
+/* init game */
 function handleStart() {
     // make sure high score isn't blank
     if (currHighScore == null) {
         highScore.innerHTML = "";
     }
 
+    // remove start contidion until loss
+    document.removeEventListener("keydown", handleStart, { once: true })
+    jumpBtn.removeEventListener("click", handleStart, { once: true });
+
+
+    jumpBtn.innerHTML = "Jump";
 
     // properly updates time on each game
     lastTime = null;
@@ -124,10 +130,11 @@ function handleLose() {
 
     // prevent immediate playback
     setTimeout(() => {
-        document.addEventListener("keydown", handleStart, {once: true})
+        document.addEventListener("keydown", handleStart, { once: true });
+        jumpBtn.addEventListener("click", handleStart, { once: true });
         messageScreen.classList.remove("hide");
         highScore.classList.remove("hide");
-    }, 800)
+    }, 850)
 }
 
 

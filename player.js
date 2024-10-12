@@ -1,19 +1,24 @@
 import { getCustomProperty, incrementCustomProperty, setCustomProperty } from "./updateCustomProperty.js";
 
 const player = document.querySelector('[data-player]');
+const jumpBtn = document.querySelector('.jumpBtn');
 
 const JUMP_SPEED = 0.45;
 const GRAVITY = 0.0015;
-// only 2 frames 
-    // change when importing multiple custom frames
 const PLAYER_FRAME_COUNT = 3;
-    // every frame lasts 100ms
+// every frame lasts 150ms initially
 const FRAME_TIME = 150;
 
 let isJumping;
 let playerFrame;
 let currFrameTime;
 let yVelocity;
+let jumpFlag;
+
+// flag for button press
+jumpBtn.addEventListener("click", () => {
+    jumpFlag = true;
+})
 
 export function setupPlayer() {
     isJumping = false;
@@ -26,6 +31,9 @@ export function setupPlayer() {
     //every reset we remove and reset onJump listener
     document.removeEventListener("keydown", onJump);
     document.addEventListener("keydown", onJump);
+
+    document.removeEventListener("click", onJump);
+    document.addEventListener("click", onJump);
 }
 
 
@@ -91,10 +99,9 @@ function handleJump(delta) {
 // event listener
 function onJump(e) {
     // cannot combo jumps
-    if (e.code !== "Space" || isJumping) {
-        return;
+    if ((jumpFlag == true || e.code == "Space") && !(isJumping)) {
+        yVelocity = JUMP_SPEED;
+        isJumping = true;
+        jumpFlag = false;
     }
-
-    yVelocity = JUMP_SPEED;
-    isJumping = true;
 }
