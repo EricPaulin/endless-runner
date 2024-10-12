@@ -62,7 +62,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 35vmin;
-    min-height: 12vmin;
+    min-height: 10vmin;
 
     background-color: black;
     border: 1px solid #000;
