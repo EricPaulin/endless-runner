@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-  <img width="696" alt="Screenshot 2024-10-11 at 9 42 12 PM" src="https://github.com/user-attachments/assets/f9bcad67-01df-4294-aeb9-afb0ab0ef406">
+  <img width="696" alt="Screenshot 2024-10-11 at 10 02 38 PM" src="https://github.com/user-attachments/assets/5608a568-709c-47aa-9682-5d6245014606">
 </p>
 
 ### [About Blob Run]
