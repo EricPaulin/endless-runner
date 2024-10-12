@@ -2,8 +2,8 @@ import { getCustomProperty, incrementCustomProperty, setCustomProperty } from ".
 
 // make obstacle and floor speed equal
 const SPEED = 0.05;
-const OBSTACLE_INTERVAL_MIN = 700;
-const OBSTACLE_INTERVAL_MAX = 2000;
+const OBSTACLE_INTERVAL_MIN = 750;
+const OBSTACLE_INTERVAL_MAX = 2200;
 
 const container = document.querySelector('[data-container]');
 
@@ -49,9 +49,19 @@ export function getObjectRects() {
 
 /* loads obstacle into game */
 function createObstacle() {
+
     const obstacle = document.createElement("img");
     obstacle.dataset.obstacle = true;
-    obstacle.src = "./images/cactus.png";
+
+    /* randomly generate obstacle */
+    var randomNum = Math.floor(Math.random() * 10);
+    if (randomNum == 0) {
+        obstacle.src = "./images/cactus_2.png";
+    }
+    else {
+        obstacle.src = "./images/cactus_1.png";
+    }
+    
     obstacle.classList.add("obstacle");
     // moves to far right end of screen 
     setCustomProperty(obstacle, "--left", 100);
