@@ -10,8 +10,11 @@ const container = document.querySelector('[data-container]');
 const score = document.querySelector('[data-score]');
 const highScore = document.querySelector('[data-high-score]');
 const messageScreen = document.querySelector('[data-message-screen]');
-const message1 = document.querySelector('.message1');
+const player = document.querySelector('[data-player]');
 
+const logoContainer = document.querySelector('.logoContainer');
+const message1 = document.querySelector('.message1');
+const message2 = document.querySelector('.message2');
 const jumpBtn = document.querySelector('.jumpBtn');
 
 setPixelToWorldScale();
@@ -105,6 +108,7 @@ function handleStart() {
     setupFloor();
     setupPlayer();
     setupObstacle();
+    logoContainer.classList.add("hide");
     messageScreen.classList.add("hide");
     highScore.classList.add("hide");
     // works with monitor refresh rate
@@ -127,6 +131,7 @@ function handleLose() {
     }
 
     message1.innerHTML = "Game Over";
+    message2.innerHTML = "Press Start to Try Again";
 
     // prevent immediate playback
     setTimeout(() => {
@@ -134,6 +139,7 @@ function handleLose() {
         jumpBtn.addEventListener("click", handleStart, { once: true });
         messageScreen.classList.remove("hide");
         highScore.classList.remove("hide");
+        jumpBtn.innerHTML = "Start";
     }, 850)
 }
 

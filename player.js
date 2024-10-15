@@ -67,7 +67,6 @@ function handleRun(delta, speedScale) {
     // run animation
     if (currFrameTime >= FRAME_TIME) {
         playerFrame = (playerFrame + 1) % PLAYER_FRAME_COUNT;
-        //player.src = `./images/dino-run-${playerFrame}.png`;
         player.src = `./images/blob_run_${playerFrame}.png`;
 
         //reset frametime

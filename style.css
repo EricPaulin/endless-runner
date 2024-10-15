@@ -9,25 +9,48 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     margin: 0;
+    min-height: 100vh;
+    width: 100vw;
+
+    background-image: url(./images/desert.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .container {
     position: relative;
     overflow: hidden;
 
+    min-height: 22vh;
 }
 
 .score {
     position: absolute;
-    font-size: 3vmin;
     right: 1vmin;
     top: 1vmin;
+    font-size: calc(15px + 1.5vw);
 }
 
 .high-score {
-    font-size: 3vmin;
+    font-size: calc(10px + 1.5vw);
+}
+
+/* Logo */
+.logoContainer {
+    position: absolute;
+}
+
+.gameLogo {
+    position: fixed;
+    z-index: 99999999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 50vmin;
+    min-height: 30vmin;
 }
 
 /* message block */
@@ -62,27 +85,57 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 35vmin;
+    min-height: 12vmin;
+    border-radius: 25px;
+    border: 0;
+    outline: none;
+    background-color: black;
+    color: white;
+    letter-spacing: 2px;
+    font-size: calc(10px + 1.5vw);
+    transition: all 0.1s ease;
+    box-shadow: rgb(100, 100, 100) 0px 8px 0px 0px;
+    cursor: pointer;
+}
+
+.jumpBtn:active {
+    background-color: black(255, 56, 86);
+    box-shadow: rgb(100, 100, 100) 0px 0px 0px 0px;
+    top: 88%;
+}
+
+
+
+.jumpBdtn {
+    position: fixed;
+    z-index: 99999999;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 35vmin;
     min-height: 10vmin;
 
     background-color: black;
     border: 1px solid #000;
     border-radius: 4px;
-    box-shadow:white 4px 4px 0 0, #000 4px 4px 0 1px;
-    
+    box-shadow: white 4px 4px 0 0, #000 4px 4px 0 1px;
+
     color: white;
     cursor: pointer;
     outline: none;
-   
+
     font-size: 15px;
     line-height: 20px;
     padding: 12px 40px;
 }
 
-.jumpBtn:active {
+.jumpBdtn:active {
     box-shadow: none;
     left: 51%;
     top: 88%;
 }
+
+
 
 .hide {
     display: none;
