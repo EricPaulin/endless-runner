@@ -2,7 +2,7 @@ import { getCustomProperty, incrementCustomProperty, setCustomProperty } from ".
 
 // make obstacle and floor speed equal
 const SPEED = 0.05;
-const OBSTACLE_INTERVAL_MIN = 750;
+const OBSTACLE_INTERVAL_MIN = 800;
 const OBSTACLE_INTERVAL_MAX = 2200;
 
 const container = document.querySelector('[data-container]');
@@ -55,11 +55,17 @@ function createObstacle() {
 
     /* randomly generate obstacle */
     var randomNum = Math.floor(Math.random() * 10);
-    if (randomNum == 0) {
-        obstacle.src = "./images/cactus_2.png";
+    if (randomNum <= 2) {
+        obstacle.src = "./images/poke_1.png";
+    }
+    else if (randomNum == 3) {
+        obstacle.src = "./images/poke_2.png";
+    }
+    else if (randomNum == 4) {
+        obstacle.src = "./images/cactus_1.png";
     }
     else {
-        obstacle.src = "./images/cactus_1.png";
+        obstacle.src = "./images/cactus_2.png";
     }
     
     obstacle.classList.add("obstacle");

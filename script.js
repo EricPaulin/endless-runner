@@ -123,11 +123,11 @@ function handleLose() {
     // set Game Over Screen + set High Score
     if (currHighScore == null) {
         currHighScore = Math.ceil(currScore);
-        highScore.innerHTML = `High Score: ${currHighScore}`
+        highScore.innerHTML = `High Score: ${currHighScore - 1}`
     }
     if (currScore > currHighScore) {
         currHighScore = Math.ceil(currScore);
-        highScore.innerHTML = `High Score: ${currHighScore}`;
+        highScore.innerHTML = `High Score: ${currHighScore - 1}`;
     }
 
     message1.innerHTML = "Game Over";
